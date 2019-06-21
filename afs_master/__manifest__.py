@@ -9,8 +9,11 @@
     'summary': 'Customisation on partner data model',
     'data': [
         'views/partner_base.xml',
+        'views/company_size.xml',
+        'views/partner_job_level.xml',
         'views/menu.xml',
+        'security/ir.model.access.csv'
     ],
-    'depends': ['partner_address_street3', 'partner_firstname'],
+    'depends': ['contacts', 'partner_address_street3', 'partner_firstname'],
     'installable': True,
 }

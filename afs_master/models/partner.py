@@ -22,6 +22,7 @@ class ResPartner(models.Model):
                                        ('former', 'Former Teacher'),
                                        ('teacher', 'Teacher')], string='Teaching Status', default='na')
     aec_ID = fields.Char('AEC ID')
+    aec_country = fields.Char('Country Name')
     gender = fields.Char('Gender')
     civil_status = fields.Char('Civil Status')
     nationality = fields.Char('Nationality')
@@ -31,7 +32,27 @@ class ResPartner(models.Model):
     birthday = fields.Date('Birthday')
     birth_country = fields.Char('Birth Country')
     profession = fields.Char('Profession')
+    company_size_id = fields.Many2one('partner.size', string='Company size')
+    job_level_id = fields.Many2one('partner.job.level', string='Job Level')
 
-    company_type = fields.Char('Company type')
-    industry = fields.Char('Industry')
+    afs_company_type = fields.Char('Company type')
+    linkedin = fields.Char('Linkedin')
+    opt_in_out = fields.Boolean('Opt-in', default=True)
 
+
+class PartnerSize(models.Model):
+    _name = 'partner.size'
+    _order = 'sequence,name'
+
+    sequence = fields.Integer('Sequence', default=10)
+    name = fields.Char('Name')
+    active = fields.Boolean('Active', default=True)
+
+
+class PartnerJobLevel(models.Model):
+    _name = 'partner.job.level'
+    _order = 'sequence,name'
+
+    sequence = fields.Integer('Sequence', default=10)
+    name = fields.Char('Name')
+    active = fields.Boolean('Active', default=True)

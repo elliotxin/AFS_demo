@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_create,perm_read,perm_write,perm_unlink
+access_membership_type_all,membership.type.all,afs_membership.model_afs_membership_type,base.group_user,False,True,False,False
+access_membership_all,membership.all,afs_membership.model_afs_membership,base.group_user,False,True,False,False
+
+access_membership_type_admin,membership.type.all,afs_membership.model_afs_membership_type,base.group_system,True,True,True,True
+access_membership_admin,membership.all,afs_membership.model_afs_membership,base.group_system,True,True,True,True

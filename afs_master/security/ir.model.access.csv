@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_create,perm_read,perm_write,perm_unlink
+access_company_size_all,company.size.all,afs_master.model_partner_size,base.group_user,False,True,False,False
+access_company_size_admin,company.size.admin,afs_master.model_partner_size,base.group_system,True,True,True,True
+access_job_level_all,partner.job.level.all,afs_master.model_partner_job_level,base.group_user,False,True,False,False
+access_job_level_admin,partner.job.level.admin,afs_master.model_partner_job_level,base.group_system,True,True,True,True
