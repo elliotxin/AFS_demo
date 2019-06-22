@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_partner_staff_tree" model="ir.ui.view">
+        <field name="name">AFS partner staff tree</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="sequence">20</field>
+        <field name="inherit_id" ref="view_partner_base_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="display_name" position="after">
+                    <field name="aec_ID"/>
+                </field>
+
+                <field name="category_id" position="replace">
+                    <field name="category_id" invisible="1"/>
+                    <field name="staff_type"/>
+                </field>
+
+            </data>
+        </field>
+    </record>
+</odoo>

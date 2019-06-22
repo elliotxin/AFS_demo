@@ -9,7 +9,7 @@ class ResPartner(models.Model):
 
     aec_contact_type = fields.Selection([('b2c', 'Contacts'),
                                          ('b2b', 'Corporate'),
-                                         ('teach', 'Teacher')], string='AEC Contact Type', default=False)
+                                         ('staff', 'Staff')], string='AEC Contact Type', default=False)
 
     actual_customer = fields.Boolean('Actual Customer', default=False)
     membership_status = fields.Selection([('na', 'N/A'),
@@ -18,9 +18,10 @@ class ResPartner(models.Model):
     student_status = fields.Selection([('na', 'N/A'),
                                        ('former', 'Former Student'),
                                        ('student', 'Student')], string='Student Status', default='na')
-    teacher_status = fields.Selection([('na', 'N/A'),
-                                       ('former', 'Former Teacher'),
-                                       ('teacher', 'Teacher')], string='Teaching Status', default='na')
+    staff_type = fields.Selection([('na', 'N/A'),
+                                   ('former', 'Former Teacher'),
+                                   ('teacher', 'Teacher'),
+                                   ('admin', 'Administration')], string='Staff type', default='na')
     aec_ID = fields.Char('AEC ID')
     aec_country = fields.Char('Country Name')
     gender = fields.Char('Gender')

@@ -64,6 +64,7 @@
                 </field>
 
                 <field name="category_id" position="after">
+                    <field name="staff_type" attrs="{'invisible': [('aec_contact_type', '!=', 'staff')]}"/>
                     <field name="opt_in_out"/>
                 </field>
 
@@ -90,6 +91,7 @@
                     <field name="gender" attrs="{'invisible': [('type','!=', 'contact')]}"/>
                     <field name="linkedin" attrs="{'invisible':['|', ('aec_contact_type', '!=', 'b2b'), ('type','!=', 'contact')]}" widget="url"/>
                     <field name="lang" attrs="{'invisible':['|', ('aec_contact_type', '!=', 'b2b'), ('type','!=', 'contact')]}"/>
+                    <field name="staff_type" attrs="{'invisible': [('aec_contact_type', '!=', 'staff')]}"/>
                     <field name="opt_in_out" />
                 </xpath>
 
@@ -121,7 +123,7 @@
                 <field name="name" position="after">
                     <filter name="afs_contact" string="Contact" domain="[('aec_contact_type', '=', 'b2c')]"/>
                     <filter name="afs_corporate" string="Corporate" domain="[('aec_contact_type', '=', 'b2b')]"/>
-                    <filter name="afs_teacher" string="Teachers" domain="[('aec_contact_type', '=', 'teach')]"/>
+                    <filter name="afs_staff" string="Staff" domain="[('aec_contact_type', '=', 'staff')]"/>
                 </field>
             </data>
         </field>
