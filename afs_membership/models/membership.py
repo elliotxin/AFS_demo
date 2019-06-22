@@ -27,4 +27,7 @@ class Membership(models.Model):
     def _compute_membership_state(self):
         for rec in self:
             td = fields.Date.today()
+            if not rec.end_date:
+                rec.state = 'active'
+                continue
             rec.state = rec.end_date >= td and 'active' or 'expired'
