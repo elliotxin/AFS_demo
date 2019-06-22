@@ -3,6 +3,7 @@ from odoo import api, fields, models
 
 class MembershipType(models.Model):
     _name = 'afs.membership.type'
+    _order = 'name'
 
     name = fields.Char('Name')
     price = fields.Float('Price')
@@ -11,8 +12,9 @@ class MembershipType(models.Model):
 
 class Membership(models.Model):
     _name = 'afs.membership'
+    _rec_name = 'aec_membershipID'
 
-    partner_id = fields.Many2one('res.partner', 'Member')
+    aec_membershipID = fields.Char('Membership ID')
     membership_type_id = fields.Many2one('afs.membership.type', 'Membership Type')
     price = fields.Float('Price')
     start_date = fields.Date('Start Date')
@@ -20,7 +22,9 @@ class Membership(models.Model):
     description = fields.Text('Description')
     state = fields.Selection([('active', 'Active'),
                               ('expired', 'Expired')], string='Status', compute='_compute_membership_state')
+    partner_ids = fields.Many2many('res.partner', 'list_member', 'membership', 'member', string='Members')
 
     def _compute_membership_state(self):
         for rec in self:
-            rec.state = True
+            td = fields.Date.today()
+            rec.state = rec.end_date >= td and 'active' or 'expired'

@@ -8,10 +8,11 @@
     'license': 'AGPL-3',
     'summary': 'Membership module',
     'data': [
+        'views/partner.xml',
         'views/menu.xml',
         'views/membership.xml',
         'security/ir.model.access.csv'
     ],
-    'depends': [],
+    'depends': ['base'],
     'installable': True,
 }

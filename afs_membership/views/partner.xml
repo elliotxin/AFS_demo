@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_partner_base_form" model="ir.ui.view">
+        <field name="name">AFS partner membership form</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='child_ids']/form/sheet" position="inside">
+                <field name="membership_ids" attrs="{'invisible': [('type', '!=', 'contact')]}">
+                    <tree>
+                        <field name="aec_membershipID"/>
+                        <field name="membership_type_id"/>
+                        <field name="end_date"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </xpath>
+
+            <notebook position="inside">
+                <page name="membership" string="Membership">
+                    <field name="membership_ids">
+                        <tree>
+                            <field name="aec_membershipID"/>
+                            <field name="membership_type_id"/>
+                            <field name="end_date"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
