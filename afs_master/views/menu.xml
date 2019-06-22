@@ -20,7 +20,7 @@
         <field name="res_model">res.partner</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
-        <field name="context">{'search_default_afs_corporate':1, 'search_type_company':1, 'default_aec_contact_type': 'b2b'}</field>
+        <field name="context">{'search_default_afs_corporate':1, 'search_default_type_company':1, 'default_aec_contact_type': 'b2b'}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new corporate.
@@ -60,19 +60,16 @@
 
     <menuitem name="Individuals"
         id="menu_b2c_root"
-        sequence="10"
         action="action_b2c"
         web_icon="afs_master,static/description/afs_contact.png"/>
 
     <menuitem name="Corporate"
         id="menu_b2b_root"
-        sequence="11"
         action="action_b2b"
         web_icon="afs_master,static/description/afs_corporate.png"/>
 
     <menuitem name="Staff"
         id="menu_staff_root"
-        sequence="12"
         action="action_staff"
         web_icon="afs_master,static/description/afs_teacher.png"/>
 </odoo>
