@@ -50,7 +50,7 @@
                 </field>
 
                 <field name="lang" position="replace">
-                    <field name="linkedin" attrs="{'invisible':[('aec_contact_type', '!=', 'b2b')]}" widget="url"/>
+                    <field name="linkedin" attrs="{'invisible':['|', ('is_company', '=', True), ('aec_contact_type', '!=', 'b2b')]}" widget="url"/>
                     <field name="lang" attrs="{'invisible':[('aec_contact_type', '!=', 'b2b')]}"/>
                 </field>
 
