@@ -3,7 +3,7 @@
 {
     'name': 'Partner Data for Alliance Francaise Singapore',
     'version': '12.0.0.0.2',
-    'category': 'Membership',
+    'category': 'AFS',
     'author': 'Alitec Pte Ltd',
     'license': 'AGPL-3',
     'summary': 'Customisation on partner data model',

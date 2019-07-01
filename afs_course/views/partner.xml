@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_partner_course_form" model="ir.ui.view">
+        <field name="name">AFS partner course form</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="afs_master.view_partner_base_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='internal_notes']" position="before">
+                <page name="course" string="Courses">
+                    <field name="course_ids">
+                        <tree>
+                            <field name="course_id"/>
+                            <field name="category"/>
+                            <field name="term"/>
+                            <field name="registration_date"/>
+                            <field name="registration_price"/>
+                            <field name="registration_type"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

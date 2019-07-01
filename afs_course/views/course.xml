@@ -1,0 +1,93 @@
+<odoo>
+    <record id="course_tree" model="ir.ui.view">
+        <field name="name">course tree</field>
+        <field name="model">course</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="class_type"/>
+                <field name="category"/>
+                <field name="modality"/>
+                <field name="term"/>
+            </tree>
+        </field>
+    </record>
+
+        <record id="course_form" model="ir.ui.view">
+            <field name="name">course form</field>
+            <field name="model">course</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="courseID"/>
+                                <field name="class_code"/>
+                                <field name="description"/>
+                                <field name="level"/>
+                                <field name="age_range"/>
+                                <field name="subject"/>
+                                <field name="category"/>
+                                <field name="class_type"/>
+
+                            </group>
+
+                            <group>
+                                <field name="modality"/>
+                                <field name="pace"/>
+                                <field name="location"/>
+                                <field name="aecID"/>
+                                <field name="class_price"/>
+                                <field name="expected_duration"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="term"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page name="session" string="Sessions">
+                                <field name="session_ids">
+                                    <tree>
+                                        <field name="teacher_id"/>
+                                        <field name="classroom"/>
+                                        <field name="date"/>
+                                        <field name="start_time" widget="float_time"/>
+                                        <field name="end_time" widget="float_time"/>
+                                        <field name="session_attended"/>
+                                    </tree>
+                                </field>
+
+                            </page>
+
+                            <page name="student" string="Students">
+                                <field name="participant_ids">
+                                    <tree>
+                                        <field name="student_id" invisible="1"/>
+                                        <field name="student_firstname"/>
+                                        <field name="student_lastname"/>
+                                        <field name="absence_rate"/>
+                                        <field name="registration_date"/>
+                                        <field name="price"/>
+                                        <field name="registration_type"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+        <record id="action_course" model="ir.actions.act_window">
+            <field name="name">Courses</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+</odoo>
