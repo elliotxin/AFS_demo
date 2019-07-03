@@ -6,7 +6,7 @@
     'category': 'AFS',
     'author': 'Alitec Pte Ltd',
     'license': 'AGPL-3',
-    'summary': 'Courses',
+    'summary': 'Courses.',
     'data': [
             'views/course.xml',
             'views/student.xml',
