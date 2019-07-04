@@ -7,7 +7,7 @@ from odoo.exceptions import RedirectWarning, UserError, ValidationError
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    aec_contact_type = fields.Selection([('b2c', 'Contacts'),
+    aec_contact_type = fields.Selection([('b2c', 'Individual'),
                                          ('b2b', 'Corporate'),
                                          ('staff', 'Staff')], string='AEC Contact Type', default=False)
 
