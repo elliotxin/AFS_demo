@@ -131,6 +131,15 @@
                     <filter name="afs_corporate" string="Corporate" domain="[('aec_contact_type', '=', 'b2b')]"/>
                     <filter name="afs_staff" string="Staff" domain="[('aec_contact_type', '=', 'staff')]"/>
                 </field>
+
+                <filter name="customer" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </filter>
+
+                <filter name="supplier" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </filter>
+
             </data>
         </field>
     </record>
