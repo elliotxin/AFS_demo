@@ -13,7 +13,7 @@
                 </field>
 
                 <field name="type" position="before">
-                    <field name="aec_ID"/>
+                    <field name="aec_student_ID" groups="base.group_no_one"/>
                 </field>
 
                 <field name="title" position="replace"/>
@@ -107,6 +107,7 @@
                     <page name="arc_en_ciel" string="Arc En Ciel Config" groups="base.group_no_one">
                         <group>
                             <group>
+                                <field name="aec_company_ID" groups="base.group_no_one"/>
                                 <field name="aec_contact_type" groups="base.group_no_one"/>
                                 <field name="aec_customer_type" groups="base.group_no_one"/>
                                 <field name="is_student" groups="base.group_no_one"/>
@@ -126,7 +127,7 @@
         <field name="arch" type="xml">
             <data>
                 <field name="name" position="after">
-                    <filter name="afs_contact" string="Contact" domain="[('aec_contact_type', '=', 'b2c')]"/>
+                    <filter name="afs_contact" string="Individual" domain="[('aec_contact_type', '=', 'b2c')]"/>
                     <filter name="afs_corporate" string="Corporate" domain="[('aec_contact_type', '=', 'b2b')]"/>
                     <filter name="afs_staff" string="Staff" domain="[('aec_contact_type', '=', 'staff')]"/>
                 </field>
@@ -146,8 +147,12 @@
                     <field name="parent_id"/>
                     <field name="firstname"/>
                     <field name="lastname"/>
-                    <field name="aec_ID"/>
+                    <field name="aec_student_ID" invisible="1"/>
                     <field name="is_student" invisible="1"/>
+                </field>
+                <field name="phone" position="replace">
+                    <field name="phone" invisible="1"/>
+                    <field name="mobile"/>
                 </field>
 
                 <field name="email" position="after">
