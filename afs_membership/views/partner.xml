@@ -3,7 +3,7 @@
         <field name="name">AFS partner membership form</field>
         <field name="model">res.partner</field>
         <field name="type">form</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="afs_master.view_partner_base_form"/>
         <field name="arch" type="xml">
 
             <xpath expr="//field[@name='child_ids']/form/sheet" position="inside">
@@ -28,6 +28,10 @@
                         </tree>
                     </field>
                 </page>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='arc_en_ciel']/group/group[2]/field[@name='membership_status']" position="before">
+                <field name="membership_type_id"/>
             </xpath>
 
         </field>

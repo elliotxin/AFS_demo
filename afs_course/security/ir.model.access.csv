@@ -13,3 +13,6 @@ access_course_participant_admin,course.participant.admin,afs_course.model_course
 
 access_partner_course_all,partner.course.all,afs_course.model_res_partner_course,base.group_user,False,True,False,False
 access_partner_course_admin,partner.course.admin,afs_course.model_res_partner_course,base.group_system,True,True,True,True
+
+access_course_term_all,course.term.all,afs_course.model_course_term,base.group_user,False,True,False,False
+access_course_term_admin,course.term.admin,afs_course.model_course_term,base.group_system,True,True,True,True

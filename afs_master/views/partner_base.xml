@@ -13,7 +13,8 @@
                 </field>
 
                 <field name="type" position="before">
-                    <field name="aec_student_ID" groups="base.group_no_one"/>
+                    <field name="aec_student_ID" attrs="{'invisible': [('aec_contact_type' ,'=', 'b2b')]}"/>
+                    <field name="aec_company_ID"/>
                 </field>
 
                 <field name="title" position="replace"/>
@@ -42,7 +43,6 @@
                             <field name="academic_level"/>
                             <field name="academic_establishment"/>
                             <field name="birthday"/>
-                            <field name="birth_country"/>
                         </group>
                     </group>
                 </notebook>
@@ -62,7 +62,7 @@
                 </field>
 
                 <field name="category_id" position="before">
-                    <field name="afs_company_type" attrs="{'invisible': ['|', ('aec_contact_type', '!=', 'b2b'), ('company_type', '=', 'person')]}"/>
+                    <field name="company_size_id" attrs="{'invisible': [('is_company', '=', False)]}" options="{'no_create': True}"/>
                     <field name="industry_id" attrs="{'invisible': [('is_company', '=', False)]}" options="{'no_create': True}"/>
                 </field>
 
@@ -107,14 +107,21 @@
                     <page name="arc_en_ciel" string="Arc En Ciel Config" groups="base.group_no_one">
                         <group>
                             <group>
-                                <field name="aec_company_ID" groups="base.group_no_one"/>
                                 <field name="aec_contact_type" groups="base.group_no_one"/>
                                 <field name="aec_customer_type" groups="base.group_no_one"/>
-                                <field name="is_student" groups="base.group_no_one"/>
+                            </group>
+                            <group>
+                                <field name="student_status" groups="base.group_no_one"/>
+                                <field name="membership_status" groups="base.group_no_one"/>
+                                <field name="membership_end_date"/>
                             </group>
                         </group>
                     </page>
                 </notebook>
+
+                <page name="sales_purchases" position="attributes">
+                    <attribute name="groups">base.group_no_one</attribute>
+                </page>
 
             </data>
         </field>
@@ -156,8 +163,8 @@
                     <field name="parent_id"/>
                     <field name="firstname"/>
                     <field name="lastname"/>
+                    <field name="membership_status"/>
                     <field name="aec_student_ID" invisible="1"/>
-                    <field name="is_student" invisible="1"/>
                 </field>
                 <field name="phone" position="replace">
                     <field name="phone" invisible="1"/>

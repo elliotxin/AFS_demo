@@ -6,7 +6,7 @@ class Course(models.Model):
     _name = 'course'
     _description = 'Course'
 
-    name = fields.Char('Course')
+    name = fields.Char('Course Name')
     courseID = fields.Integer('Course ID')
     class_code = fields.Char('Class Code')
     description = fields.Text('Description')
@@ -20,7 +20,7 @@ class Course(models.Model):
     location = fields.Char('Location')
     aecID = fields.Integer('AEC ID')
     class_price = fields.Float('Class Price')
-    expected_duration = fields.Integer('Expected Duration (hr)')
+    expected_duration = fields.Float('Expected Duration (hr)')
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
     state = fields.Char('Status')
@@ -67,3 +67,9 @@ class CourseSessionAttendance(models.Model):
     attendee_id = fields.Many2one('res.partner', 'Attendee')
     attend = fields.Boolean('Attendance', default=False)
 
+
+class CourseTerm(models.Model):
+    _name = 'course.term'
+    _description = 'Terms'
+
+    name = fields.Char('Term name')
