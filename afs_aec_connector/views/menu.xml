@@ -1,0 +1,4 @@
+<odoo>
+    <menuitem id="menu_aec_connector_config" name="AEC Connector"
+        parent="base.menu_administration" sequence="10"/>
+</odoo>

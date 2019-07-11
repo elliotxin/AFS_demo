@@ -4,7 +4,7 @@
         <field name="name">Mapping table</field>
         <field name="model">table.mapping</field>
         <field name="arch" type="xml">
-            <form string="Job Level">
+            <form string="Mapping Table">
                 <sheet>
                     <group col="4">
                         <field name="name"/>
@@ -36,7 +36,7 @@
         </field>
     </record>
 
-    <record id="action_aec_connector" model="ir.actions.act_window">
+    <record id="action_aec_connector_mapping" model="ir.actions.act_window">
         <field name="name">AEC Connector</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">table.mapping</field>
@@ -49,7 +49,7 @@
         </field>
     </record>
 
-    <menuitem id="menu_aec_connector" name="AEC Connector"
-        parent="base.menu_administration" sequence="10"
-        action="action_aec_connector"/>
+    <menuitem id="menu_aec_connector_map" name="Mapping"
+        parent="menu_aec_connector_config" sequence="10"
+        action="action_aec_connector_mapping"/>
 </odoo>
