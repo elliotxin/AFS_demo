@@ -14,7 +14,6 @@
 
                 <field name="type" position="before">
                     <field name="aec_student_ID" attrs="{'invisible': [('aec_contact_type' ,'=', 'b2b')]}"/>
-                    <field name="aec_company_ID"/>
                 </field>
 
                 <field name="title" position="replace"/>
@@ -109,6 +108,8 @@
                             <group>
                                 <field name="aec_contact_type" groups="base.group_no_one"/>
                                 <field name="aec_customer_type" groups="base.group_no_one"/>
+                                <field name="aec_company_ID" groups="base.group_no_one"/>
+                                <field name="aec_family_ID" groups="base.group_no_one"/>
                             </group>
                             <group>
                                 <field name="student_status" groups="base.group_no_one"/>

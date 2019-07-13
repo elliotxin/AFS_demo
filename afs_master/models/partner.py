@@ -24,10 +24,12 @@ class ResPartner(models.Model):
     staff_type = fields.Selection([('na', 'N/A'),
                                    ('former', 'Former Teacher'),
                                    ('teacher', 'Teacher'),
-                                   ('admin', 'Administration')], string='Staff type', default='na')
+                                   ('admin', 'Administration'),
+                                   ('former_admin', 'Former Admin')], string='Staff type', default='na')
     aec_student_ID = fields.Char('AEC Student ID')
     aec_company_ID = fields.Char('AEC Company ID')
     aec_country = fields.Char('Country Name')
+    aec_family_ID = fields.Integer('AEC Family ID')
     gender = fields.Char('Gender')
     civil_status = fields.Char('Civil Status')
     nationality = fields.Char('Nationality')
@@ -39,13 +41,13 @@ class ResPartner(models.Model):
     company_size_id = fields.Many2one('partner.size', string='Company size')
     job_level_id = fields.Many2one('partner.job.level', string='Job Level')
 
-    # afs_company_type = fields.Char('Company type')
     linkedin = fields.Char('Linkedin')
     opt_in_out = fields.Boolean('Opt-in', default=True)
 
 
 class PartnerSize(models.Model):
     _name = 'partner.size'
+    _description = 'Business Size'
     _order = 'sequence,name'
 
     sequence = fields.Integer('Sequence', default=10)
@@ -55,6 +57,7 @@ class PartnerSize(models.Model):
 
 class PartnerJobLevel(models.Model):
     _name = 'partner.job.level'
+    _description = 'Job Level'
     _order = 'sequence,name'
 
     sequence = fields.Integer('Sequence', default=10)

@@ -3,6 +3,7 @@ from odoo import api, fields, models
 
 class MembershipType(models.Model):
     _name = 'afs.membership.type'
+    _description = 'Membership Type'
     _order = 'name'
 
     name = fields.Char('Name')
@@ -12,6 +13,7 @@ class MembershipType(models.Model):
 
 class Membership(models.Model):
     _name = 'afs.membership'
+    _description = 'Membership'
     _rec_name = 'aec_membershipID'
 
     aec_membershipID = fields.Char('Membership ID')
@@ -22,7 +24,7 @@ class Membership(models.Model):
     description = fields.Text('Description')
     state = fields.Selection([('active', 'Active'),
                               ('expired', 'Expired')], string='Status', compute='_compute_membership_state')
-    partner_ids = fields.Many2many('res.partner', 'list_member', 'membership', 'member', string='Members')
+    line_ids = fields.One2many('afs.membership.line', 'membership_id', string='Members')
 
     def _compute_membership_state(self):
         for rec in self:
@@ -31,3 +33,14 @@ class Membership(models.Model):
                 rec.state = 'active'
                 continue
             rec.state = rec.end_date >= td and 'active' or 'expired'
+
+
+class MembershipLine(models.Model):
+    _name = 'afs.membership.line'
+    _description = 'Members'
+
+    membership_id = fields.Many2one('afs.membership', 'Membership', ondelete='cascade')
+    name = fields.Char('Membership Number')
+    partner_id = fields.Many2one('res.partner', string='Member')
+    familyID = fields.Char('Family ID')
+    note = fields.Char('Comment')

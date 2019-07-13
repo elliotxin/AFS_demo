@@ -29,6 +29,7 @@ class ResPartner(models.Model):
 
 class ResPartnerCourse(models.Model):
     _name = 'res.partner.course'
+    _description = 'Courses per student'
 
     partner_id = fields.Many2one('res.partner', 'Student', ondelete='cascade')
     course_id = fields.Many2one('course')

@@ -26,6 +26,7 @@
                     <sheet>
                         <group>
                             <group>
+                                <field name="sessionID"/>
                                 <field name="course_id"/>
                                 <field name="teacher_id"/>
                                 <field name="classroom"/>
@@ -43,8 +44,9 @@
                             <page name="attendees" string="Attendance list">
                                 <field name="attendance_ids">
                                     <tree editable="bottom">
-                                        <field name="attendee_id"/>
                                         <field name="attend"/>
+                                        <field name="attendee_id"/>
+                                        <field name="note"/>
                                     </tree>
                                 </field>
                             </page>

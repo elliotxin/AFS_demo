@@ -7,7 +7,6 @@ class Course(models.Model):
     _description = 'Course'
 
     name = fields.Char('Course Name')
-    courseID = fields.Integer('Course ID')
     class_code = fields.Char('Class Code')
     description = fields.Text('Description')
     level = fields.Char('Level')
@@ -18,13 +17,13 @@ class Course(models.Model):
     modality = fields.Char('Modality')
     pace = fields.Char('Learning Pace')
     location = fields.Char('Location')
-    aecID = fields.Integer('AEC ID')
+    aecID = fields.Char('AEC Course ID')
     class_price = fields.Float('Class Price')
-    expected_duration = fields.Float('Expected Duration (hr)')
+    expected_duration = fields.Float('Scheduled Hours (hr)')
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
     state = fields.Char('Status')
-    term = fields.Char('Term')
+    term_ids = fields.Many2many('course.term', string='Terms')
     session_ids = fields.One2many('course.session', 'course_id', 'Session')
     participant_ids = fields.One2many('course.participant', 'course_id', string='Participant')
 
@@ -49,6 +48,7 @@ class CourseSession(models.Model):
     _description = 'Session'
     _rec_name = 'date'
 
+    sessionID = fields.Char('Session ID')
     teacher_id = fields.Many2one('res.partner', 'Teacher')
     classroom = fields.Char('Classroom')
     course_id = fields.Many2one('course', 'Course', ondelete='cascade')
@@ -66,6 +66,7 @@ class CourseSessionAttendance(models.Model):
     session_id = fields.Many2one('course.session', 'Session', ondelete='cascade')
     attendee_id = fields.Many2one('res.partner', 'Attendee')
     attend = fields.Boolean('Attendance', default=False)
+    note = fields.Char('Comment')
 
 
 class CourseTerm(models.Model):

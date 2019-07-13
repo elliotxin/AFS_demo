@@ -6,29 +6,29 @@
         <field name="inherit_id" ref="afs_master.view_partner_base_form"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//field[@name='child_ids']/form/sheet" position="inside">
-                <field name="membership_ids" attrs="{'invisible': [('type', '!=', 'contact')]}">
-                    <tree>
-                        <field name="aec_membershipID"/>
-                        <field name="membership_type_id"/>
-                        <field name="end_date"/>
-                        <field name="state"/>
-                    </tree>
-                </field>
-            </xpath>
+<!--            <xpath expr="//field[@name='child_ids']/form/sheet" position="inside">-->
+<!--                <field name="membership_ids" attrs="{'invisible': [('type', '!=', 'contact')]}">-->
+<!--                    <tree>-->
+<!--                        <field name="aec_membershipID"/>-->
+<!--                        <field name="membership_type_id"/>-->
+<!--                        <field name="end_date"/>-->
+<!--                        <field name="state"/>-->
+<!--                    </tree>-->
+<!--                </field>-->
+<!--            </xpath>-->
 
-            <xpath expr="//notebook/page[@name='internal_notes']" position="before">
-                <page name="membership" string="Membership">
-                    <field name="membership_ids">
-                        <tree>
-                            <field name="aec_membershipID"/>
-                            <field name="membership_type_id"/>
-                            <field name="end_date"/>
-                            <field name="state"/>
-                        </tree>
-                    </field>
-                </page>
-            </xpath>
+<!--            <xpath expr="//notebook/page[@name='internal_notes']" position="before">-->
+<!--                <page name="membership" string="Membership">-->
+<!--                    <field name="membership_ids">-->
+<!--                        <tree>-->
+<!--                            <field name="aec_membershipID"/>-->
+<!--                            <field name="membership_type_id"/>-->
+<!--                            <field name="end_date"/>-->
+<!--                            <field name="state"/>-->
+<!--                        </tree>-->
+<!--                    </field>-->
+<!--                </page>-->
+<!--            </xpath>-->
 
             <xpath expr="//notebook/page[@name='arc_en_ciel']/group/group[2]/field[@name='membership_status']" position="before">
                 <field name="membership_type_id"/>

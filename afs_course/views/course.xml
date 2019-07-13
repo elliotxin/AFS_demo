@@ -9,7 +9,7 @@
                 <field name="class_type"/>
                 <field name="category"/>
                 <field name="modality"/>
-                <field name="term"/>
+                <field name="term_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -24,7 +24,7 @@
                         <group>
                             <group>
                                 <field name="name"/>
-                                <field name="courseID"/>
+                                <field name="aecID"/>
                                 <field name="class_code"/>
                                 <field name="description"/>
                                 <field name="level"/>
@@ -39,12 +39,11 @@
                                 <field name="modality"/>
                                 <field name="pace"/>
                                 <field name="location"/>
-                                <field name="aecID"/>
                                 <field name="class_price"/>
                                 <field name="expected_duration"/>
                                 <field name="start_date"/>
                                 <field name="end_date"/>
-                                <field name="term"/>
+                                <field name="term_ids" widget="many2many_tags"/>
                             </group>
                         </group>
 
