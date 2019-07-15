@@ -1,0 +1,25 @@
+<odoo>
+    <record forcecreate="True" id="ir_cron_update_course_partner_action" model="ir.cron">
+        <field name="name">Course Enrollment Update scheduler</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+model.cron_update_enrollment()
+        </field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+    </record>
+
+    <record model="ir.actions.server" id="action_update_enrollment">
+        <field name="name">Update Enrollment  Server Action</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">
+            model.cron_update_enrollment()
+        </field>
+    </record>
+</odoo>

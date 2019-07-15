@@ -1,0 +1,23 @@
+<odoo>
+
+
+    <record id="action_membership_config" model="ir.actions.act_window">
+        <field name="name">Membership type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">afs.membership.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Memberships"
+        id="menu_membership_root"
+        sequence="20"
+        web_icon="afs_membership,static/description/afs_membership.png"/>
+
+    <menuitem name="Configuration"
+        id="menu_configuration"
+        sequence="20"
+        action="action_membership_config"
+        parent="menu_membership_root"/>
+
+</odoo>

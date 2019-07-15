@@ -1,0 +1,31 @@
+<odoo>
+        <menuitem name="Courses"
+        id="menu_course_root"
+        action="action_course"
+        web_icon="afs_course,static/description/course.png"/>
+
+        <menuitem name="Sessions"
+        id="menu_course_session"
+        action="action_session"
+        parent="menu_course_root"
+        sequence="10"/>
+
+<!--        <menuitem name="Students"-->
+<!--        id="menu_course_student"-->
+<!--        action="action_student"-->
+<!--        parent="menu_course_root"-->
+<!--        sequence="20"/>-->
+
+        <menuitem name="Terms"
+        id="menu_course_term"
+        action="action_course_term"
+        parent="menu_course_root"
+        sequence="30"/>
+
+        <menuitem name="Update Enrollment Data"
+        id="menu_course_enrollment_data"
+        action="action_update_enrollment"
+        parent="menu_course_root"
+        sequence="40"/>
+
+</odoo>

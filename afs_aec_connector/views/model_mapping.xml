@@ -1,0 +1,88 @@
+<odoo>
+
+    <record id="mapping_form" model="ir.ui.view">
+        <field name="name">Mapping table</field>
+        <field name="model">table.mapping</field>
+        <field name="arch" type="xml">
+            <form string="Mapping Table">
+                <sheet>
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="model_id"/>
+                        <field name="aec_object_name"/>
+                    </group>
+                    <notebook>
+                        <page name="mapping" string="Mapping">
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="aec_field_name"/>
+                                    <field name="field_id" domain="[('model_id', '=',parent.model_id)]"/>
+                                    <field name="uniqueID"/>
+                                    <field name="mapping_id"/>
+                                </tree>
+                            </field>
+                            <div/>
+                            <p>
+                                <strong>Help</strong><br/>
+                                <span>- The "name" is the name of the mapping</span><br/>
+                                <span>- The "AEC object name" is the name of the object in the external system</span><br/>
+                                <span>- The unique ID represents the record unique key in the external system. There can be
+                                only one field marked as "unique ID". The unique ID is compulsory in model mapping</span><br/>
+                                <span>- If the value of a field is a structured data, the "mapping" is the mapping that
+                                describes this structured data</span>
+                            </p>
+                        </page>
+
+                        <page name="special" string="Special Processing">
+                            <group col="4">
+                                <field name="pre_action_id"/>
+                                <field name="post_action_id"/>
+                            </group>
+                            <div/>
+                            <p>
+                                <strong>Help</strong><br/>
+                                <span>- The pre processing action is executed on the raw data returned by the API. The
+                                    purpose is to condition the data in a format understood by the mapping, as well as
+                                    applying some logic e.g. on incomplete/inconsistent data or changing some mapping</span><br/>
+                                <span>- The post processing action is executed after each record creation or update</span>
+                            </p>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="mapping_tree" model="ir.ui.view">
+        <field name="name">Mapping table</field>
+        <field name="model">table.mapping</field>
+        <field eval="6" name="priority"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="model_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_aec_connector_mapping" model="ir.actions.act_window">
+        <field name="name">AEC Connector</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">table.mapping</field>
+        <field name="context">{'custom_name': True}</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new mapping table.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_aec_connector_map" name="Mapping"
+        parent="menu_aec_connector_config" sequence="10"
+        action="action_aec_connector_mapping"/>
+</odoo>

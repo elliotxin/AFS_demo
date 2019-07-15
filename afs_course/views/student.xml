@@ -1,0 +1,24 @@
+<odoo>
+
+<!--    <record id="view_res_partner_filter" model="ir.ui.view">-->
+<!--        <field name="name">afs student search</field>-->
+<!--        <field name="model">res.partner</field>-->
+<!--        <field name="inherit_id" ref="afs_master.view_res_partner_filter"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <data>-->
+<!--                <filter name="afs_staff" position="after">-->
+<!--                    <filter name="afs_student" string="Student" domain="[('is_student', '=', True)]"/>-->
+<!--                </filter>-->
+<!--            </data>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="action_student" model="ir.actions.act_window">-->
+<!--        <field name="name">Courses</field>-->
+<!--        <field name="type">ir.actions.act_window</field>-->
+<!--        <field name="res_model">res.partner</field>-->
+<!--        <field name="context">{'search_default_afs_student':1, 'default_aec_customer_type': 'ACTIVE_STUDENT'}</field>-->
+<!--        <field name="view_type">form</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+<!--    </record>-->
+</odoo>

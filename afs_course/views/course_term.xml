@@ -1,0 +1,21 @@
+<odoo>
+
+    <record id="course_term_tree" model="ir.ui.view">
+        <field name="name">course term tree</field>
+        <field name="model">course.term</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_course_term" model="ir.actions.act_window">
+            <field name="name">Terms</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">course.term</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+        </record>
+</odoo>

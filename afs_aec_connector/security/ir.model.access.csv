@@ -1,0 +1,11 @@
+id,name,model_id/id,group_id/id,perm_create,perm_read,perm_write,perm_unlink
+access_model_mapping_all,mapping.all,afs_aec_connector.model_table_mapping,base.group_user,False,True,False,False
+access_model_mapping_admin,mapping.admin,afs_aec_connector.model_table_mapping,base.group_system,True,True,True,True
+access_model_mapping_line_all,mapping.line.,afs_aec_connector.model_table_mapping_line,base.group_user,False,True,False,False
+access_model_mapping_line_admin,mapping.line.admin,afs_aec_connector.model_table_mapping_line,base.group_system,True,True,True,True
+access_connector_setting_all,connector.setting.all,afs_aec_connector.model_connector_setting,base.group_user,False,True,False,False
+access_connector_setting_admin,connector.setting.admin,afs_aec_connector.model_connector_setting,base.group_system,True,True,True,True
+access_ext_synchronisation_all,ext.synchronisation.all,afs_aec_connector.model_ext_synchronisation,base.group_user,False,True,False,False
+access_ext_synchronisation_admin,ext.synchronisation.admin,afs_aec_connector.model_ext_synchronisation,base.group_system,True,True,True,True
+access_ext_synchronisation_line_all,ext.synchronisation.line.all,afs_aec_connector.model_ext_synchronisation_line,base.group_user,False,True,False,False
+access_ext_synchronisation_line_admin,ext.synchronisation.line.admin,afs_aec_connector.model_ext_synchronisation_line,base.group_system,True,True,True,True
