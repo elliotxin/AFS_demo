@@ -53,8 +53,8 @@ class CourseSession(models.Model):
     classroom = fields.Char('Classroom')
     course_id = fields.Many2one('course', 'Course', ondelete='cascade')
     date = fields.Date('Date')
-    start_time = fields.Float('Start Time')
-    end_time = fields.Float('End Time')
+    start_time = fields.Char('Start Time')
+    end_time = fields.Char('End Time')
     session_attended = fields.Boolean('Attended')
     attendance_ids = fields.One2many('course.session.attendance', 'session_id', 'Attendance')
 
