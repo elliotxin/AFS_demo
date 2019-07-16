@@ -16,24 +16,31 @@ class ConnectorSetting(models.Model):
     data_name = fields.Char('Data name (in response)')
     end_point = fields.Char('url end point')
     api_key = fields.Char('API Key')
-    date_filter = fields.Datetime('Date filter')
+    date_filter = fields.Datetime('Date from')
+    date_filter_to = fields.Datetime('Date to')
     mapping_id = fields.Many2one('table.mapping', 'Mapping')
     note = fields.Text('Note')
     sequence = fields.Integer('Sequence', default=10)
     loop = fields.Boolean('Loop', default=True, help='Uncheck to run only a single page')
+    loop_count = fields.Integer('Number of Pages')
 
     @api.multi
     def action_get(self):
         test = self._context.get('test', False)
         self.ensure_one()
         url = "/".join([self.end_point, self.name])
-        url = self.date_filter and "/".join([url, 'updated', fields.Datetime.to_string(self.date_filter)]) or url
+        base_url = self.date_filter and "/".join([url, fields.Datetime.to_string(self.date_filter)]) or url
         api_key = self.api_key
         headers = {'api_key': api_key}
-        total_loop = 1
 
-        while url and total_loop <= 1000:
-            res = requests.get(url, headers=headers)
+        total_loop = 1
+        payload = {'page': total_loop}
+        if self.date_filter_to:
+            payload['modifiedTo'] = self.date_filter_to
+
+        next_ok = True
+        while next_ok and total_loop <= 4000:
+            res = requests.get(base_url, headers=headers, params=payload)
 
             data_list = res.json()[self.data_name]
             next_page = res.json()['pagging']['next']
@@ -45,12 +52,16 @@ class ConnectorSetting(models.Model):
             action_id.run()
 
             if not test:
-                updated_data = eval(self.note)
+                # updated_data = eval(self.note)
+                updated_data = data_list
                 self.process_list(updated_data)
             self.env.cr.commit()
 
-            url = next_page
+            next_ok = len(next_page) > 0
             total_loop += 1
+            payload['page'] = total_loop
+
+        self.write({'loop_count': total_loop-1})
         return
 
     @api.multi

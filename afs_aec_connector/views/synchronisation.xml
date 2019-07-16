@@ -12,6 +12,8 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
                     </group>
                     <field name="line_ids">
                         <tree editable="bottom">

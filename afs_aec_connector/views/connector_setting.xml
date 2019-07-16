@@ -17,7 +17,9 @@
                         <field name="end_point" placeholder="e.g. https://afsingapour-preprod.aec-app.com/arc-en-ciel/api/public/crm/v1"/>
                         <field name="api_key" placeholder="e.g. jkjcjdchsjdcsghd="/>
                         <field name="date_filter"/>
+                        <field name="date_filter_to"/>
                         <field name="loop"/>
+                        <field name="loop_count"/>
                         <field name="sequence"/>
                     </group>
                     <field name="note"/>

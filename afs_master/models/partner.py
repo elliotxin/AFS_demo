@@ -28,6 +28,7 @@ class ResPartner(models.Model):
                                    ('former_admin', 'Former Admin')], string='Staff type', default='na')
     aec_student_ID = fields.Char('AEC Student ID')
     aec_company_ID = fields.Char('AEC Company ID')
+    aec_staff_ID = fields.Char('AEC Staff ID')
     aec_country = fields.Char('Country Name')
     aec_family_ID = fields.Integer('AEC Family ID')
     gender = fields.Char('Gender')

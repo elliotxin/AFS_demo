@@ -13,7 +13,8 @@
                 </field>
 
                 <field name="type" position="before">
-                    <field name="aec_student_ID" attrs="{'invisible': [('aec_contact_type' ,'=', 'b2b')]}"/>
+                    <field name="aec_student_ID" attrs="{'invisible': [('aec_contact_type' ,'in', ['b2b', 'staff'])]}"/>
+                    <field name="aec_staff_ID" attrs="{'invisible': [('aec_contact_type' ,'!=', 'staff')]}"/>
                 </field>
 
                 <field name="title" position="replace"/>
