@@ -75,7 +75,7 @@
                             <field name="name"/>
                             <field name="familyID"/>
                             <field name="partner_id"/>
-                            <field name="note"/>
+                            <field name="price"/>
                         </tree>
                     </field>
                 </sheet>

@@ -23,16 +23,14 @@ class Membership(models.Model):
     end_date = fields.Date('End Date')
     description = fields.Text('Description')
     state = fields.Selection([('active', 'Active'),
-                              ('expired', 'Expired')], string='Status', compute='_compute_membership_state')
+                              ('expired', 'Expired')], string='Status', default='active')
     line_ids = fields.One2many('afs.membership.line', 'membership_id', string='Members')
 
-    def _compute_membership_state(self):
-        for rec in self:
-            td = fields.Date.today()
-            if not rec.end_date:
-                rec.state = 'active'
-                continue
-            rec.state = rec.end_date >= td and 'active' or 'expired'
+    @api.model
+    def update_membership_state(self):
+        td = fields.Date.today()
+        membership_id_to_expire_id = self.env['afs.membership'].search([('state', '=', 'active'), ('end_date', '<', td)])
+        membership_id_to_expire_id.write({'state': 'expired'})
 
 
 class MembershipLine(models.Model):
@@ -43,4 +41,4 @@ class MembershipLine(models.Model):
     name = fields.Char('Membership Number')
     partner_id = fields.Many2one('res.partner', string='Member')
     familyID = fields.Char('Family ID')
-    note = fields.Char('Comment')
+    price = fields.Float('Price')

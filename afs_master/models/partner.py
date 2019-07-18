@@ -41,6 +41,7 @@ class ResPartner(models.Model):
     birth_country = fields.Char('Birth Country')
     company_size_id = fields.Many2one('partner.size', string='Company size')
     job_level_id = fields.Many2one('partner.job.level', string='Job Level')
+    how_hear = fields.Char('How did you hear about us')
 
     linkedin = fields.Char('Linkedin')
     opt_in_out = fields.Boolean('Opt-in', default=True)

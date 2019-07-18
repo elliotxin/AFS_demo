@@ -26,6 +26,8 @@ class Course(models.Model):
     term_ids = fields.Many2many('course.term', string='Terms')
     session_ids = fields.One2many('course.session', 'course_id', 'Session')
     participant_ids = fields.One2many('course.participant', 'course_id', string='Participant')
+    aec_company_ID = fields.Char('AEC Company ID')
+    partner_company_id = fields.Many2one('res.partner', 'Client Company', domain=[('is_company', '=', True)])
 
 
 class CourseParticipant(models.Model):
@@ -41,6 +43,7 @@ class CourseParticipant(models.Model):
     student_firstname = fields.Char(related='student_id.firstname', string='First Name', readonly=True)
     student_lastname = fields.Char(related='student_id.lastname', string='Last Name', readonly=True)
     customer_id = fields.Many2one('res.partner', 'Customer', help='The customer is the entity or individual paying for the course')
+    absence_count = fields.Integer('Number of Absence')
 
 
 class CourseSession(models.Model):
@@ -52,7 +55,7 @@ class CourseSession(models.Model):
     teacher_id = fields.Many2one('res.partner', 'Teacher')
     classroom = fields.Char('Classroom')
     course_id = fields.Many2one('course', 'Course', ondelete='cascade')
-    date = fields.Date('Date')
+    date = fields.Date('Session Date')
     start_time = fields.Char('Start Time')
     end_time = fields.Char('End Time')
     session_attended = fields.Boolean('Attended')
@@ -66,7 +69,6 @@ class CourseSessionAttendance(models.Model):
     session_id = fields.Many2one('course.session', 'Session', ondelete='cascade')
     attendee_id = fields.Many2one('res.partner', 'Attendee')
     attend = fields.Boolean('Attendance', default=False)
-    note = fields.Char('Comment')
 
 
 class CourseTerm(models.Model):

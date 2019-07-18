@@ -46,7 +46,6 @@
                                     <tree editable="bottom">
                                         <field name="attend"/>
                                         <field name="attendee_id"/>
-                                        <field name="note"/>
                                     </tree>
                                 </field>
                             </page>

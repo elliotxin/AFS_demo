@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'Membership Module for Alliance Francaise Singapore',
-    'version': '12.0.0.0.5',
+    'version': '12.0.0.0.6',
     'category': 'AFS',
     'author': 'Alitec Pte Ltd',
     'license': 'AGPL-3',
@@ -11,7 +11,8 @@
         'views/partner.xml',
         'views/menu.xml',
         'views/membership.xml',
-        'security/ir.model.access.csv'
+        'security/ir.model.access.csv',
+        'data/ir.cron.xml'
     ],
     'depends': ['base', 'afs_master'],
     'installable': True,

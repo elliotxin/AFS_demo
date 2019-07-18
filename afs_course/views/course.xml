@@ -26,13 +26,14 @@
                                 <field name="name"/>
                                 <field name="aecID"/>
                                 <field name="class_code"/>
-                                <field name="description"/>
                                 <field name="level"/>
                                 <field name="age_range"/>
                                 <field name="subject"/>
                                 <field name="category"/>
                                 <field name="class_type"/>
-
+                                <field name="partner_company_id"/>
+                                <field name="aec_company_ID"/>
+                                <field name="description"/>
                             </group>
 
                             <group>
@@ -72,6 +73,7 @@
                                         <field name="registration_date"/>
                                         <field name="price"/>
                                         <field name="registration_type"/>
+                                        <field name="absence_count"/>
                                     </tree>
                                 </field>
                             </page>
