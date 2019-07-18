@@ -76,6 +76,7 @@
                             <field name="familyID"/>
                             <field name="partner_id"/>
                             <field name="price"/>
+                            <field name="comment"/>
                         </tree>
                     </field>
                 </sheet>

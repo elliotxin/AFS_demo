@@ -11,9 +11,18 @@
                 </header>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="date_from"/>
-                        <field name="date_to"/>
+                        <group>
+                            <field name="active"/>
+                            <field name="name"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                        <group name="sync_all" >
+                            <field name="sync_all"/>
+                            <field name="stop_date" attrs="{'required': [('sync_all', '=', True)]}"/>
+                            <field name="step" attrs="{'required': [('sync_all', '=', True)]}"/>
+                        </group>
+
                     </group>
                     <field name="line_ids">
                         <tree editable="bottom">

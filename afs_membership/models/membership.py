@@ -42,3 +42,4 @@ class MembershipLine(models.Model):
     partner_id = fields.Many2one('res.partner', string='Member')
     familyID = fields.Char('Family ID')
     price = fields.Float('Price')
+    comment = fields.Char('Comment')

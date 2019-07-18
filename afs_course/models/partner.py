@@ -9,7 +9,6 @@ class ResPartner(models.Model):
 
     @api.model
     def cron_update_enrollment(self):
-        print(1)
         partner_id = self.env['course.participant'].search([(1, '=', 1)]).mapped('student_id')
         partner_id.update_partner_enrollment()
 
@@ -20,7 +19,7 @@ class ResPartner(models.Model):
             participation_ids = self.env['course.participant'].search([('student_id', '=', rec.id)])
             vals = [(0, 0, {'course_id': p.course_id and p.course_id.id,
                             'category': p.course_id and p.course_id.category,
-                            'term': p.course_id and p.course_id.term,
+                            'term_ids': p.course_id and p.course_id.term_ids and [(4, i.id, 0) for i in p.course_id.term_ids] or False,
                             'registration_date': p.registration_date,
                             'registration_price': p.price,
                             'registration_type': p.registration_type}) for p in participation_ids]
@@ -34,7 +33,7 @@ class ResPartnerCourse(models.Model):
     partner_id = fields.Many2one('res.partner', 'Student', ondelete='cascade')
     course_id = fields.Many2one('course')
     category = fields.Char('Category')
-    term = fields.Char('Term')
+    term_ids = fields.Many2many('course.term', string='Course Term(s)')
 
     registration_date = fields.Date('Registration date')
     registration_price = fields.Float('Registration Price')

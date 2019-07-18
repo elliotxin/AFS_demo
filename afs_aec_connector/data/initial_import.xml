@@ -1,0 +1,18 @@
+<odoo>
+    <record forcecreate="True" id="ir_cron_initial_import_action" model="ir.cron">
+        <field name="name">initial Import scheduler</field>
+        <field name="model_id" ref="model_ext_synchronisation"/>
+        <field name="state">code</field>
+        <field name="code">
+list_id = model.search([(1, '=', 1)])
+list_id.action_execute()
+        </field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">10</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+    </record>
+
+</odoo>

@@ -38,12 +38,12 @@
                             <field name="civil_status"/>
                             <field name="nationality"/>
                             <field name="mother_tongue"/>
+                            <field name="how_hear"/>
                         </group>
                         <group>
                             <field name="academic_level"/>
                             <field name="academic_establishment"/>
                             <field name="birthday"/>
-                            <field name="how_hear"/>
                         </group>
                     </group>
                 </notebook>
@@ -55,7 +55,7 @@
 
                 <field name="lang" position="replace">
                     <field name="linkedin" attrs="{'invisible':['|', ('is_company', '=', True), ('aec_contact_type', '!=', 'b2b')]}" widget="url"/>
-                    <field name="lang" attrs="{'invisible':[('aec_contact_type', '=', 'b2b'),('is_company','=', True)]}"/>
+                    <field name="lang" invisible="1"/>
                 </field>
 
                 <field name="website" position="replace">

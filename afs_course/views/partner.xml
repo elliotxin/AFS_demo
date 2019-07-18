@@ -11,7 +11,7 @@
                         <tree>
                             <field name="course_id"/>
                             <field name="category"/>
-                            <field name="term"/>
+                            <field name="term_ids" widget="many2many_tags"/>
                             <field name="registration_date"/>
                             <field name="registration_price"/>
                             <field name="registration_type"/>

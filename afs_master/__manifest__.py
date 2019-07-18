@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'Partner Data for Alliance Francaise Singapore',
-    'version': '12.0.0.0.9',
+    'version': '12.0.0.1.0',
     'category': 'AFS',
     'author': 'Alitec Pte Ltd',
     'license': 'AGPL-3',
