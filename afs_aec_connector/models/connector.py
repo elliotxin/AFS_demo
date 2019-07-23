@@ -71,6 +71,9 @@ class ConnectorSetting(models.Model):
     def process_list(self, data_list):
         self.ensure_one()
 
+        if not data_list or len(data_list) == 0:
+            return
+        
         if not self.mapping_id or not self.mapping_id.model_id:
             raise UserError('object %s is badly mapped' % self.name)
         mapping_id = self.mapping_id
