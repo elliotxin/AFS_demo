@@ -1,4 +1,5 @@
 import requests
+import json
 from odoo import models, fields, api, exceptions
 from odoo.tools.profiler import profile
 import logging
@@ -101,7 +102,7 @@ class ConnectorSetting(models.Model):
                         self.update_record(record_vals, to_update[0], mapping_id)
                 except:
                     res = self.result_log
-                    res += "\n" + record_vals
+                    res += "\n" + json.dumps(record_vals)
                     self.write({'result_log': res})
 
         else:
@@ -110,7 +111,7 @@ class ConnectorSetting(models.Model):
                     self.create_record(record_vals, mapping_id)
                 except:
                     res = self.result_log
-                    res += "\n" + record_vals
+                    res += "\n" + json.dumps(record_vals)
                     self.write({'result_log': res})
 
     @api.model
