@@ -20,6 +20,7 @@ class ConnectorSetting(models.Model):
     date_filter_to = fields.Datetime('Date to')
     mapping_id = fields.Many2one('table.mapping', 'Mapping')
     note = fields.Text('Note')
+    result_log = fields.Text('Log')
     sequence = fields.Integer('Sequence', default=10)
     loop = fields.Boolean('Loop', default=True, help='Uncheck to run only a single page')
     loop_count = fields.Integer('Number of Pages')
@@ -73,7 +74,7 @@ class ConnectorSetting(models.Model):
 
         if not data_list or len(data_list) == 0:
             return
-        
+
         if not self.mapping_id or not self.mapping_id.model_id:
             raise UserError('object %s is badly mapped' % self.name)
         mapping_id = self.mapping_id
@@ -93,13 +94,24 @@ class ConnectorSetting(models.Model):
             for record_vals in data_list:
                 domain = [(external_key_field_name, '=', record_vals[external_key_external_name])]
                 to_update = self.env[model_name].search(domain)
-                if len(to_update) == 0:
-                    self.create_record(record_vals, mapping_id)
-                else:
-                    self.update_record(record_vals, to_update[0], mapping_id)
+                try:
+                    if len(to_update) == 0:
+                        self.create_record(record_vals, mapping_id)
+                    else:
+                        self.update_record(record_vals, to_update[0], mapping_id)
+                except:
+                    res = self.result_log
+                    res += "\n" + record_vals
+                    self.write({'result_log': res})
+
         else:
             for record_vals in data_list:
-                self.create_record(record_vals, mapping_id)
+                try:
+                    self.create_record(record_vals, mapping_id)
+                except:
+                    res = self.result_log
+                    res += "\n" + record_vals
+                    self.write({'result_log': res})
 
     @api.model
     def create_record(self, record_vals, mapping_id):

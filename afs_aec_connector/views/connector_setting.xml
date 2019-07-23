@@ -22,7 +22,15 @@
                         <field name="loop_count"/>
                         <field name="sequence"/>
                     </group>
-                    <field name="note"/>
+                    <notebook>
+                        <page name="note" string="Note">
+                            <field name="note"/>
+                        </page>
+                        <page name="result_log" string="Log">
+                            <field name="result_log"/>
+                        </page>
+                    </notebook>
+
                 </sheet>
             </form>
         </field>
