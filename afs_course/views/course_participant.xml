@@ -17,6 +17,7 @@
                             <field name="price"/>
                             <field name="registration_date"/>
                             <field name="registration_type"/>
+                            <field name="synced_on_partner" groups="based.group_no_one"/>
                         </group>
                     </group>
                 </sheet>

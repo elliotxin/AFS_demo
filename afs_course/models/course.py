@@ -44,6 +44,7 @@ class CourseParticipant(models.Model):
     student_lastname = fields.Char(related='student_id.lastname', string='Last Name', readonly=True)
     customer_id = fields.Many2one('res.partner', 'Customer', help='The customer is the entity or individual paying for the course')
     absence_count = fields.Integer('Number of Absence')
+    synced_on_partner = fields.Boolean('Synced on student', default=False)
 
 
 class CourseSession(models.Model):

@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'Courses for Alliance Francaise Singapore',
-    'version': '12.0.0.0.6',
+    'version': '12.0.0.0.7',
     'category': 'AFS',
     'author': 'Alitec Pte Ltd',
     'license': 'AGPL-3',
@@ -16,6 +16,7 @@
             'views/partner.xml',
             'data/update_enrollment.xml',
             'security/ir.model.access.csv',
+            'wizard/update_enrollment.xml',
             'views/menu.xml',
     ],
     'depends': ['afs_master'],

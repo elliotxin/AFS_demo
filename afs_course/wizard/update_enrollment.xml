@@ -1,0 +1,38 @@
+<odoo>
+    <record id="update_enrollment_form" model="ir.ui.view">
+        <field name="name">Update Enrollment Form</field>
+        <field name="model">update.enrollment.partner</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                    </group>
+                    <group>
+                        <field name="date_to"/>
+                    </group>
+                    <p>
+                        - If any the dates fields are left empty, the program will only search and process at the records
+                        that are not synchronised - no update of existing records<br/>
+                        - If both of the dates are filled, the program will create or update the records during the
+                        selected period
+                    </p>
+                </group>
+                <footer>
+                    <button name="sync_enrollment" type="object" string='Run' class="btn btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_update_enrollment_partner" model="ir.actions.act_window">
+        <field name="name">Update Enrollment Student</field>
+        <field name="res_model">update.enrollment.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       <field name="view_id" ref="update_enrollment_form"/>
+       <field name="target">new</field>
+    </record>
+
+</odoo>

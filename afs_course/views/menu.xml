@@ -24,7 +24,7 @@
 
         <menuitem name="Update Enrollment Data"
         id="menu_course_enrollment_data"
-        action="action_update_enrollment"
+        action="action_update_enrollment_partner"
         parent="menu_course_root"
         sequence="40"/>
 
