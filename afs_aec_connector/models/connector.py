@@ -101,7 +101,7 @@ class ConnectorSetting(models.Model):
                     else:
                         self.update_record(record_vals, to_update[0], mapping_id)
                 except:
-                    res = self.result_log
+                    res = self.result_log or "-"
                     res += "\n" + json.dumps(record_vals)
                     self.write({'result_log': res})
 
@@ -110,7 +110,7 @@ class ConnectorSetting(models.Model):
                 try:
                     self.create_record(record_vals, mapping_id)
                 except:
-                    res = self.result_log
+                    res = self.result_log or "-"
                     res += "\n" + json.dumps(record_vals)
                     self.write({'result_log': res})
 
