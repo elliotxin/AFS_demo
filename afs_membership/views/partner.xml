@@ -17,18 +17,17 @@
 <!--                </field>-->
 <!--            </xpath>-->
 
-<!--            <xpath expr="//notebook/page[@name='internal_notes']" position="before">-->
-<!--                <page name="membership" string="Membership">-->
-<!--                    <field name="membership_ids">-->
-<!--                        <tree>-->
-<!--                            <field name="aec_membershipID"/>-->
-<!--                            <field name="membership_type_id"/>-->
-<!--                            <field name="end_date"/>-->
-<!--                            <field name="state"/>-->
-<!--                        </tree>-->
-<!--                    </field>-->
-<!--                </page>-->
-<!--            </xpath>-->
+            <xpath expr="//notebook/page[@name='membership']" position="inside">
+                <field name="membership_ids">
+                    <tree>
+                        <field name="name"/>
+                        <field name="familyID"/>
+                        <field name="price"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </tree>
+                </field>
+            </xpath>
 
             <xpath expr="//notebook/page[@name='arc_en_ciel']/group/group[2]/field[@name='membership_status']" position="before">
                 <field name="membership_type_id"/>

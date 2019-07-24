@@ -43,3 +43,5 @@ class MembershipLine(models.Model):
     familyID = fields.Char('Family ID')
     price = fields.Float('Price')
     comment = fields.Char('Comment')
+    start_date = fields.Date(related='membership_id.start_date', readonly=True)
+    end_date = fields.Date(related='membership_id.end_date', readonly=True)
