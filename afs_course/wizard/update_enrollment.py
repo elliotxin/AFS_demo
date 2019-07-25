@@ -11,5 +11,5 @@ class UpdateEnrollment(models.TransientModel):
 
     @api.multi
     def sync_enrollment(self):
-        partner_id = self.env['course.participant'].search([(1, '=', 1)]).mapped('student_id')
+        partner_id = self.env['course.participant'].search([(1, '=', 1)], limit=1).mapped('student_id')
         partner_id.update_partner_enrollment(date_from=self.date_from, date_to=self.date_to)
