@@ -13,7 +13,7 @@ class Course(models.Model):
     age_range = fields.Char('Age Range')
     subject = fields.Char('Subjects')
     category = fields.Char('Category')
-    class_type = fields.Char('Class Type / Audience')
+    class_type = fields.Char('Class Type')
     modality = fields.Char('Modality')
     pace = fields.Char('Learning Pace')
     location = fields.Char('Location')
