@@ -9,34 +9,32 @@ class ResPartner(models.Model):
 
     @api.model
     def cron_update_enrollment(self):
-        partner_id = self.env['course.participant'].search([(1, '=', 1)]).mapped('student_id')
-        partner_id.update_partner_enrollment()
+        # partner_id = self.env['course.participant'].search([(1, '=', 1)]).mapped('student_id')
+        self.update_partner_enrollment()
 
     @api.multi
     def update_partner_enrollment(self, date_from=None, date_to=None):
-        for rec in self:
-            # rec.course_ids.unlink()
-            domain = [('student_id', '=', rec.id), ('synced_on_partner', '=', False)]
+        domain = [('synced_on_partner', '=', False), ('student_id', '!=', False)]
+        if date_from and date_to:
+            domain_partner_course = [('registration_date', '>=', date_from),
+                                     ('registration_date', '<=', date_to)]
+            course_to_delete_ids = self.env['res.partner.course'].search(domain_partner_course)
+            course_to_delete_ids.unlink()
+            domain = domain_partner_course
+            domain.append(('student_id', '!=', False))
 
-            if date_from and date_to:
-                domain_partner_course = [('partner_id', '=', rec.id),
-                                         ('registration_date', '>=', date_from),
-                                         ('registration_date', '<=', date_to)]
-                course_to_delete_ids = self.env['res.partner.course'].search(domain_partner_course)
-                course_to_delete_ids.unlink()
+        participation_ids = self.env['course.participant'].search(domain)
+        partner_ids = participation_ids.mapped('student_id')
+        for rec in partner_ids:
+            prt_id = participation_ids.filtered(lambda r: r.student_id == rec)
 
-                domain.pop(1)
-                date_filter = [('registration_date', '>=', date_from), ('registration_date', '<=', date_to)]
-                domain.extend(date_filter)
-
-            participation_ids = self.env['course.participant'].search(domain)
             vals = [(0, 0, {'course_id': p.course_id and p.course_id.id,
                             'category': p.course_id and p.course_id.category,
                             'term_ids': p.course_id and p.course_id.term_ids and [(4, i.id, 0) for i in p.course_id.term_ids] or False,
                             'registration_date': p.registration_date,
                             'registration_price': p.price,
-                            'registration_type': p.registration_type}) for p in participation_ids]
-            participation_ids.write({'synced_on_partner': True})
+                            'registration_type': p.registration_type}) for p in prt_id]
+            prt_id.write({'synced_on_partner': True})
             rec.write({'course_ids': vals})
             self.env.cr.commit()
 
