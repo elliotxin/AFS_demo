@@ -45,3 +45,4 @@ class MembershipLine(models.Model):
     comment = fields.Char('Comment')
     start_date = fields.Date(related='membership_id.start_date', readonly=True)
     end_date = fields.Date(related='membership_id.end_date', readonly=True)
+    membership_type_id = fields.Many2one(related='membership_id.membership_type_id')
