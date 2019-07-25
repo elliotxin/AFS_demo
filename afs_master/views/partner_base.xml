@@ -15,6 +15,7 @@
                 <field name="type" position="before">
                     <field name="aec_student_ID" attrs="{'invisible': [('aec_contact_type' ,'in', ['b2b', 'staff'])]}"/>
                     <field name="aec_staff_ID" attrs="{'invisible': [('aec_contact_type' ,'!=', 'staff')]}"/>
+                    <field name="aec_account_creation_date" attrs="{'invisible':[('aec_contact_type','!=', 'b2c')]}"/>
                 </field>
 
                 <field name="title" position="replace"/>
@@ -81,6 +82,15 @@
                         'default_aec_contact_type': aec_contact_type}</attribute>
                 </field>
 
+                <xpath expr="//field[@name='child_ids']/kanban/field[@name='lang']" position="after">
+                    <field name="aec_contact_type"/>
+                </xpath>
+
+                <xpath expr="//field[@name='child_ids']/kanban/templates/t/div/div[2]/div[5]" position="after">
+                    <div  t-if="record.aec_contact_type.raw_value == 'b2c'">
+                        <span style="color: blue;">(Student)</span>
+                    </div>
+                </xpath>
                 <xpath expr="//field[@name='child_ids']/form/sheet/field[@name='user_id']" position="after">
                     <field name="aec_contact_type" invisible="1"/>
                 </xpath>
