@@ -250,3 +250,16 @@ class ConnectorSetting(models.Model):
 
         return input_dict
 
+    # Customised code for normalising the response from aec before processing
+    def preprocessing_membership(self):
+        self.ensure_one()
+        data = eval(self.note)
+        res = []
+        for i in data:
+            if not i['memberID'] or not i['reference_number']:
+                continue
+            member_line_uniq = "_".join([i['memberID', 'reference_number']])
+            i['member_line_uniq'] = member_line_uniq
+            res.append(i)
+
+        self.write({'note': str(res)})
