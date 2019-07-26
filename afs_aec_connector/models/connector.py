@@ -54,8 +54,8 @@ class ConnectorSetting(models.Model):
             action_id.run()
 
             if not test:
-                # updated_data = eval(self.note)
-                updated_data = data_list
+                updated_data = eval(self.note)
+                # updated_data = data_list
                 self.process_list(updated_data)
             self.env.cr.commit()
 
