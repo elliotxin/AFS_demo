@@ -258,7 +258,7 @@ class ConnectorSetting(models.Model):
         for i in data:
             if not i['memberID'] or not i['reference_number']:
                 continue
-            member_line_uniq = "_".join([i['memberID', 'reference_number']])
+            member_line_uniq = "_".join([i['memberID'], i['reference_number']])
             i['member_line_uniq'] = member_line_uniq
             res.append(i)
 
