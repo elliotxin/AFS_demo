@@ -20,7 +20,8 @@
             <xpath expr="//notebook/page[@name='membership']" position="inside">
                 <field name="membership_ids">
                     <tree>
-                        <field name="name"/>
+                        <field name="membership_id"/>
+                        <field name="name" invisible="1"/>
                         <field name="familyID"/>
                         <field name="price"/>
                         <field name="start_date"/>
