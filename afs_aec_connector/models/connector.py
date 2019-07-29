@@ -41,6 +41,7 @@ class ConnectorSetting(models.Model):
             payload['modifiedTo'] = self.date_filter_to
 
         next_ok = True
+
         while next_ok and total_loop <= 4000:
             res = requests.get(base_url, headers=headers, params=payload)
 
@@ -59,7 +60,7 @@ class ConnectorSetting(models.Model):
                 self.process_list(updated_data)
             self.env.cr.commit()
 
-            next_ok = len(next_page) > 0
+            next_ok = len(next_page) > 0 and self.loop
             total_loop += 1
             payload['page'] = total_loop
 
