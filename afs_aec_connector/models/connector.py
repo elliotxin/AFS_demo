@@ -254,6 +254,8 @@ class ConnectorSetting(models.Model):
     # Customised code for normalising the response from aec before processing
     def preprocessing_membership(self):
         self.ensure_one()
+        if not self.note:
+            return
         data = eval(self.note)
         res = []
         for i in data:
