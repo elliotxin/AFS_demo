@@ -30,7 +30,7 @@ class ResPartner(models.Model):
     aec_company_ID = fields.Char('AEC Company ID')
     aec_staff_ID = fields.Char('AEC Staff ID')
     aec_country = fields.Char('Country Name')
-    aec_account_creation_date = fields.Date('Account creation Date')
+    aec_account_creation_date = fields.Datetime('Account creation Date')
     aec_family_ID = fields.Integer('AEC Family ID')
     gender = fields.Char('Gender')
     civil_status = fields.Char('Civil Status')
