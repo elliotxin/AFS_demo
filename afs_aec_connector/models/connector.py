@@ -54,7 +54,7 @@ class ConnectorSetting(models.Model):
             action_id = self.with_context(ctx).mapping_id.pre_action_id
             action_id.run()
 
-            if not test:
+            if not test and self.note:
                 updated_data = eval(self.note)
                 # updated_data = data_list
                 self.process_list(updated_data)
