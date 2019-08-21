@@ -96,24 +96,24 @@ class ConnectorSetting(models.Model):
             for record_vals in data_list:
                 domain = [(external_key_field_name, '=', record_vals[external_key_external_name])]
                 to_update = self.env[model_name].search(domain)
-                try:
-                    if len(to_update) == 0:
-                        self.create_record(record_vals, mapping_id)
-                    else:
-                        self.update_record(record_vals, to_update[0], mapping_id)
-                except:
-                    res = self.result_log or "-"
-                    res += "\n" + json.dumps(record_vals)
-                    self.write({'result_log': res})
+                # try:
+                if len(to_update) == 0:
+                    self.create_record(record_vals, mapping_id)
+                else:
+                    self.update_record(record_vals, to_update[0], mapping_id)
+                # except:
+                #     res = self.result_log or "-"
+                #     res += "\n" + json.dumps(record_vals)
+                #     self.write({'result_log': res})
 
         else:
             for record_vals in data_list:
-                try:
-                    self.create_record(record_vals, mapping_id)
-                except:
-                    res = self.result_log or "-"
-                    res += "\n" + json.dumps(record_vals)
-                    self.write({'result_log': res})
+                # try:
+                self.create_record(record_vals, mapping_id)
+                # except:
+                #     res = self.result_log or "-"
+                #     res += "\n" + json.dumps(record_vals)
+                #     self.write({'result_log': res})
 
     @api.model
     def create_record(self, record_vals, mapping_id):
